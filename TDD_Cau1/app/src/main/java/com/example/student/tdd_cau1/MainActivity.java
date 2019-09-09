@@ -1,16 +1,16 @@
 package com.example.student.tdd_cau1;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity { ;
-    Button btnDangNhap;
+    Button btnDangNhap, btnThoat;
     CheckBox chkLuu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity { ;
     private void addControls() {
         chkLuu = findViewById(R.id.chkLuu);
         btnDangNhap = findViewById(R.id.btnDangNhap);
+        btnThoat = findViewById(R.id.btnThoat);
     }
 
     private void addEvents() {
@@ -37,7 +38,32 @@ public class MainActivity extends AppCompatActivity { ;
                 }
             }
         });
+
+        btnThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlertDialog();
+            }
+        });
     }
 
-
+    public void showAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Thông báo");
+        builder.setMessage("Bạn muốn thoát không?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 }
