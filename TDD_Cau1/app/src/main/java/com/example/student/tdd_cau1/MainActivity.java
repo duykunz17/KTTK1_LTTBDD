@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity { ;
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
                 
             }
         });
